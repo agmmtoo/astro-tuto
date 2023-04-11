@@ -1,6 +1,7 @@
 ---
 const { frontmatter } = Astro.props;
 import BaseLayout from "./BaseLayout.astro";
+import TagContainer from "../components/TagContainer.astro";
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
@@ -11,8 +12,12 @@ import BaseLayout from "./BaseLayout.astro";
     >
   </p>
   <img src={frontmatter.image.url} alt={frontmatter.image.alt} />
-  <ul>
-    {frontmatter.tags.map((tag: string) => <li>{tag}</li>)}
-  </ul>
+  <TagContainer tags={frontmatter.tags} />
   <slot />
 </BaseLayout>
+
+<style>
+  img {
+    width: 100%;
+  }
+</style>
